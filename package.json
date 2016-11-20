@@ -1,0 +1,22 @@
+{
+  "name": "Magic-Mirror-Module-Advent",
+  "version": "1.0.0",
+  "description": "A module for connecting multiple buttons.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jopyth/MMM-Advent"
+  },
+  "keywords": [
+    "magic mirror",
+    "smart mirror",
+    "buttons",
+    "module"
+  ],
+  "author": "Joseph Bethge",
+  "contributors": "git+https://github.com/jopyth/MMM-Advent/graphs/contributors",
+  "license": "MIT",
+  "bugs": {
+    "url": "git+https://github.com/jopyth/MMM-Advent/issues"
+  },
+  "homepage": "git+https://github.com/jopyth/MMM-Advent#readme"
+}
