@@ -33,9 +33,9 @@ The following properties can be configured:
 
 | option | description |
 | ------------- | ------------- |
-| updateInterval | time between updates in ms, default is `10 * 60 * 1000` (10 minutes) |
-| marks | number of marks on the candle, default is `24` |
-| height | height of the (whole) candle in pixel, default is `420` |
-| showFlameBeforeStart | whether to show the flame before the start time, default is `false` |
-| start | date and time as a string, when the candle should start burning (down), format is `YYYY-MM-DD HH-MM-SS`, default is `"2016-12-01 08:00:00"` |
-| end | date and time as a string, when the candle should stop burning (down), format is `YYYY-MM-DD HH-MM-SS`, default is `"2016-12-24 22:00:00"` |
+| `updateInterval` | time between updates in ms, default is `10 * 60 * 1000` (10 minutes) |
+| `marks` | number of marks on the candle, default is `24` |
+| `height` | height of the (whole) candle in pixel, default is `420` |
+| `showFlameBeforeStart` | whether to show the flame before the start time, default is `false` |
+| `start` | date and time as a string, when the candle should start burning (down), format is `YYYY-MM-DD HH-MM-SS`, default is `"2016-12-01 08:00:00"` |
+| `end` | date and time as a string, when the candle should stop burning (down), format is `YYYY-MM-DD HH-MM-SS`, default is `"2016-12-24 22:00:00"` |
