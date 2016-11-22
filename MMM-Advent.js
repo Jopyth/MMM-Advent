@@ -15,10 +15,15 @@ Module.register("MMM-Advent", {
     defaults: {
         updateInterval: 10 * 60 * 1000, // 10 minutes
         marks: 24,
-        height: 420, // in pixel
+        height: 425, // in pixel
         showFlameBeforeStart: false,
         start: "2016-12-01 08:00:00", // YYYY-MM-DD HH-MM-SS
-        end: "2016-12-24 22:00:00" // YYYY-MM-DD HH-MM-SS
+        end: "2016-12-24 22:00:00", // YYYY-MM-DD HH-MM-SS
+        enableAnimation: true,
+        fontCSS: "https://fonts.googleapis.com/css?family=Dosis:700", // css of font
+        fontColor: "#000000", // black
+        candleColor: "#FFFFFF", // white
+        font: "'Dosis', sans-serif"
     },
 
     // Define start sequence.
@@ -31,12 +36,28 @@ Module.register("MMM-Advent", {
 
         var head = document.getElementsByTagName('head')[0];
 
-        var pumpkinFont = document.createElement("link");
-        pumpkinFont.rel = "stylesheet";
-        pumpkinFont.media = "screen";
-        pumpkinFont.href = "https://fontlibrary.org/face/pumpkin";
-        pumpkinFont.type = "text/css";
-        head.appendChild(pumpkinFont);
+        if (this.config.fontCSS) {
+            var font = document.createElement("link");
+            font.rel = "stylesheet";
+            font.href = this.config.fontCSS;
+            head.appendChild(font);
+        }
+
+        if (this.config.candleColor || this.config.font || this.config.fontColor) {
+            var configValues = document.createElement("style");
+            configValues.type = "text/css";
+            configValues.innerHTML = "";
+            if (this.config.candleColor) {
+                configValues.innerHTML += ".candle-body { background-color: " + this.config.candleColor + "; }\n";
+            }
+            if (this.config.font) {
+                configValues.innerHTML += ".mark { font-family: " + this.config.font + "; }\n";
+            }
+            if (this.config.fontColor) {
+                configValues.innerHTML += ".mark { color: " + this.config.fontColor + "; }\n";
+            }
+            head.appendChild(configValues);
+        }
 
         if (this.config.updateInterval < 10 * 1000) {
             // 10 seconds minimum update interval
@@ -63,6 +84,9 @@ Module.register("MMM-Advent", {
         if (this.offset >= 1.0) {
             this.offset = 1.0;
         }
+        if (this.offset <= -0.01) {
+            this.offset = -0.01;
+        }
 
         // define magic numbers
         var flameSpace = 35;
@@ -76,7 +100,6 @@ Module.register("MMM-Advent", {
 
         var candleBody = document.createElement("div");
         candleBody.className = "candle-body";
-        candleBody.style.background = this.config.candleColor;
         candleBody.style.height = (this.config.height - candleTopSpace + 1) + "px";
         wrapper.appendChild(candleBody);
 
@@ -98,6 +121,10 @@ Module.register("MMM-Advent", {
             var flameContainer = document.createElement("div");
             flameContainer.className = "flame-container";
             wrapper.appendChild(flameContainer);
+
+            if (!this.config.enableAnimation) {
+                flameContainer.style.animationName = "none";
+            }
 
             var components = [
                 "red flame",
