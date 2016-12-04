@@ -73,11 +73,8 @@ Module.register("MMM-Advent", {
         return ["MMM-Advent.css", "custom.css"];
     },
 
-    // Override dom generator.
-    getDom: function() {
+    getCandleDom(start, end) {
         var now = new Date();
-        var start = new Date(this.config.start);
-        var end = new Date(this.config.end);
 
         this.offset = (now - start) / (end - start);
 
@@ -144,4 +141,37 @@ Module.register("MMM-Advent", {
 
         return wrapper;
     },
+
+    // Override dom generator.
+    getDom: function() {
+        var startConfig = this.config.start;
+        var endConfig = this.config.end;
+
+        if (Array.isArray(startConfig) && Array.isArray(endConfig))
+        {
+            var table = document.createElement("table");
+            var tr = document.createElement("tr");
+
+            for (var i = 0; i < startConfig.length && i < endConfig.length; i++)
+            {
+                var td = document.createElement("td");
+
+                var start = new Date(startConfig[i]);
+                var end = new Date(endConfig[i]);
+
+                td.appendChild(this.getCandleDom(start, end));
+                tr.appendChild(td);
+            }
+
+            table.appendChild(tr);
+            return table;
+        }
+        else
+        {
+            var start = new Date(startConfig);
+            var end = new Date(endConfig);
+
+            return this.getCandleDom(start, end);
+        }
+    }
 });
