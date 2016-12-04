@@ -41,8 +41,8 @@ The following properties can be configured:
 | `marks` | number of marks on the candle, default is `24` |
 | `height` | height of the (whole) candle in pixel, default is `425` |
 | `showFlameBeforeStart` | whether to show the flame before the start time, default is `false` |
-| `start` | date and time as a string, when the candle should start burning (down), format is `YYYY-MM-DD HH-MM-SS`, default is `"2016-12-01 08:00:00"` |
-| `end` | date and time as a string, when the candle should stop burning (down), format is `YYYY-MM-DD HH-MM-SS`, default is `"2016-12-24 22:00:00"` |
+| `start` | date and time as a string, when the candle should start burning (down), format is `YYYY-MM-DD HH-MM-SS`, default is `"2016-12-01 08:00:00"`, can be an array of timestamps, should match the length of `end`, one candle will be created for each entry |
+| `end` | date and time as a string, when the candle should stop burning (down), format is `YYYY-MM-DD HH-MM-SS`, default is `"2016-12-24 22:00:00"`, can be an array of timestamps, should match the length of `start`, one candle will be created for each entry |
 | `enableAnimation` | set to `false` to disable flame animation, default is `true` |
 | `fontCSS` | link to a custom font stylesheet, default is `https://fonts.googleapis.com/css?family=Dosis` |
 | `fontColor` | the color of the marks on the candle, default is `#000000` (black) |
