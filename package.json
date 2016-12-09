@@ -1,7 +1,7 @@
 {
   "name": "Magic-Mirror-Module-Advent",
-  "version": "1.0.0",
-  "description": "A module for connecting multiple buttons.",
+  "version": "1.0.2",
+  "description": "A module for displaying timed candles.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jopyth/MMM-Advent"
